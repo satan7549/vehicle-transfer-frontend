@@ -19,13 +19,13 @@ const Transfer = ({ transfer }: any) => {
             Phone Number: {fromDriver ? fromDriver.phoneNumber : "Unknown"}
           </p>
           <div className="flex items-center">
-            <Image
+            {/* <Image
               height={100}
               width={100}
               className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
               src={fromDriver ? fromDriver.profilePhoto : ""}
               alt="Profile"
-            />
+            /> */}
           </div>
         </div>
 
@@ -37,13 +37,13 @@ const Transfer = ({ transfer }: any) => {
             Phone Number: {toDriver ? toDriver.phoneNumber : "Unknown"}
           </p>
           <div className="flex items-center">
-            <Image
+            {/* <Image
               height={100}
               width={100}
               className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
               src={toDriver ? toDriver.profilePhoto : ""}
               alt="Profile"
-            />
+            /> */}
           </div>
         </div>
 

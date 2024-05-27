@@ -1,5 +1,6 @@
 "use client";
 import { createVehicle } from "@/utils/api";
+import uploadFileToCloudinary from "@/utils/fileUpload";
 import React, { useState } from "react";
 
 const CreateVehicle = () => {
@@ -7,21 +8,47 @@ const CreateVehicle = () => {
   const [vehicleData, setVehicleData] = useState({
     vehicleNumber: "",
     vehicleType: "",
-    pucCertificate: "",
-    insuranceCertificate: "",
+    pucCertificate: "" as string | File,
+    insuranceCertificate: "" as string | File,
   });
 
   const handleInputChange = (e: any) => {
-    const { name, value } = e.target;
-    setVehicleData({ ...vehicleData, [name]: value });
+    const { name, value, files } = e.target;
+    if (files) {
+      setVehicleData({ ...vehicleData, [name]: files[0] });
+    } else {
+      setVehicleData({ ...vehicleData, [name]: value });
+    }
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    // createVehicle(vehicleData);
+    // Upload PUC Certificate and Insurance Certificate
+    const pucUrl =
+      typeof vehicleData.pucCertificate === "string"
+        ? vehicleData.pucCertificate
+        : await uploadFileToCloudinary(vehicleData.pucCertificate, "vehicles");
 
-    console.log(vehicleData);
+    const insuranceUrl =
+      typeof vehicleData.insuranceCertificate === "string"
+        ? vehicleData.insuranceCertificate
+        : await uploadFileToCloudinary(
+            vehicleData.insuranceCertificate,
+            "vehicles"
+          );
+
+    // Update vehicleData with file URLs
+    const updatedVehicleData = {
+      ...vehicleData,
+      pucCertificate: pucUrl,
+      insuranceCertificate: insuranceUrl,
+      vehicleType: vehicleData.vehicleType.toUpperCase(),
+    };
+
+    createVehicle(updatedVehicleData);
+
+    console.log(updatedVehicleData);
 
     setShowModal(false);
     // Reset form data if needed

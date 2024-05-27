@@ -1,4 +1,6 @@
 "use client";
+import { createDrivers } from "@/utils/api";
+import uploadFileToCloudinary from "@/utils/fileUpload";
 import React, { useState } from "react";
 
 const CreateDriver = () => {
@@ -6,20 +8,35 @@ const CreateDriver = () => {
   const [driverData, setDriverData] = useState({
     name: " ",
     phoneNumber: "",
-    profilePhoto: " ",
+    profilePhoto: "" as string | File,
   });
 
   const handleInputChange = (e: any) => {
-    const { name, value } = e.target;
-    setDriverData({ ...driverData, [name]: value });
+    const { name, value, files } = e.target;
+    if (files) {
+      setDriverData({ ...driverData, [name]: files[0] });
+    } else {
+      setDriverData({ ...driverData, [name]: value });
+    }
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    // createDriver(driverData);
+    // Upload PUC Certificate and Insurance Certificate
+    const profileUrl =
+      typeof driverData.profilePhoto === "string"
+        ? driverData.profilePhoto
+        : await uploadFileToCloudinary(driverData.profilePhoto, "vehicles");
 
-    console.log(driverData);
+    // Update driverData with file URLs
+    const updatedDriverData = {
+      ...driverData,
+      profilePhoto: profileUrl,
+      name: driverData.name.trim(),
+    };
+
+    createDrivers(updatedDriverData);
 
     setShowModal(false);
     // Reset form data if needed
