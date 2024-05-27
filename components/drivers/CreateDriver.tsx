@@ -3,7 +3,7 @@ import { createDrivers } from "@/utils/api";
 import uploadFileToCloudinary from "@/utils/fileUpload";
 import React, { useState } from "react";
 
-const CreateDriver = () => {
+const CreateDriver = ({ onCreateDriver }: any) => {
   const [showModal, setShowModal] = useState(false);
   const [driverData, setDriverData] = useState({
     name: " ",
@@ -34,9 +34,10 @@ const CreateDriver = () => {
       ...driverData,
       profilePhoto: profileUrl,
       name: driverData.name.trim(),
+      phoneNumber:`+91${driverData.phoneNumber}`,
     };
 
-    createDrivers(updatedDriverData);
+    onCreateDriver(updatedDriverData);
 
     setShowModal(false);
     // Reset form data if needed
@@ -102,7 +103,7 @@ const CreateDriver = () => {
                     Phone Number:
                   </label>
                   <input
-                    type="text"
+                    type="number"
                     id="phoneNumber"
                     name="phoneNumber"
                     value={driverData.phoneNumber}

@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.view-button {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #4a90e2;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.view-button:hover {
+  background-color: #357ae8;
+}
