@@ -7,7 +7,7 @@ const Drivers = ({ driver }: any) => {
 
   return (
     <div className="p-2 lg:w-1/3 md:w-1/2 w-full">
-      <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+      <div className="h-full flex items-center border-gray-200 border bg-white p-4 rounded-lg shadow-md">
         <Image
           alt="team"
           height={100}

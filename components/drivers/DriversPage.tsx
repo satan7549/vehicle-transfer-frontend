@@ -4,7 +4,6 @@ import DriversLists from "./DriversLists";
 import { createDrivers, fetchDrivers } from "@/utils/api";
 import CreateDriver from "./CreateDriver";
 
-// Define the type for a driver object
 interface Driver {
   id: number;
   name: string;
@@ -28,17 +27,16 @@ const DriversPage = () => {
 
   const handleCreateDriver = async (driverData: any) => {
     const createdDriver = await createDrivers(driverData);
-
     if (createdDriver) {
-      setDrivers([...drivers, createdDriver]); // Update drivers list with the new driver
+      setDrivers([...drivers, createdDriver]);
     }
   };
 
   return (
-    <>
+    <div className="page-container">
       <CreateDriver onCreateDriver={handleCreateDriver} />
       <DriversLists />
-    </>
+    </div>
   );
 };
 

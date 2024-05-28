@@ -25,7 +25,7 @@ const VehicleList = () => {
   };
 
   return (
-    <div className="flex flex-wrap -m-2">
+    <div className="flex flex-wrap m-2">
       {vehicles.map((vehicle: any) => {
         return (
           <Vehicle

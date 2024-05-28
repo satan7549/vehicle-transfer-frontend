@@ -18,7 +18,7 @@ const TransferList = () => {
   }, []);
 
   return (
-    <div className="flex flex-wrap -m-2">
+    <div className="flex flex-wrap gap-2 m-auto">
       {transfers.map((transfer: any) => {
         return <Transfer key={transfer.id} transfer={transfer} />;
       })}
