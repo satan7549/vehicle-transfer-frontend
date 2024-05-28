@@ -4,10 +4,10 @@ import CreateVehicle from "./CreateVehicle";
 
 const VehiclePage = () => {
   return (
-    <>
-      <CreateVehicle  />
+    <div className="page-container">
+      <CreateVehicle />
       <VehicleList />
-    </>
+    </div>
   );
 };
 

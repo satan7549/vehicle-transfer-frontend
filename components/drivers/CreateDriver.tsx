@@ -1,5 +1,4 @@
 "use client";
-import { createDrivers } from "@/utils/api";
 import uploadFileToCloudinary from "@/utils/fileUpload";
 import React, { useState } from "react";
 
@@ -49,12 +48,12 @@ const CreateDriver = ({ onCreateDriver }: any) => {
   };
 
   return (
-    <div>
+    <div className="mb-4">
       <button
         onClick={() => setShowModal(true)}
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
       >
-        Create New Driver
+        Add New Driver
       </button>
 
       {showModal && (

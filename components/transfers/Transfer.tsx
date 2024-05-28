@@ -5,41 +5,15 @@ const Transfer = ({ transfer }: any) => {
   const { fromDriver, toDriver, vehicle } = transfer;
 
   return (
-    <div className="max-w-xl mx-auto bg-white shadow-md rounded-md overflow-hidden mb-8">
-      <div className="p-6">
-        <h2 className="text-xl font-semibold mb-4">Transfer Details</h2>
-
-        {/* <!-- From Driver Section --> */}
-        {/* <div className="mb-6">
-          <h3 className="text-lg font-semibold mb-2">From Driver:</h3>
-          {fromDriver ? (
-            <>
-              <p className="mb-2">
-                Name: {fromDriver ? fromDriver.name : "Unknown"}
-              </p>
-              <p className="mb-2">
-                Phone Number: {fromDriver ? fromDriver.phoneNumber : "Unknown"}
-              </p>
-              <div className="flex items-center">
-                <Image
-                  height={100}
-                  width={100}
-                  className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
-                  src={fromDriver ? fromDriver.profilePhoto : ""}
-                  alt="Profile"
-                />
-              </div>
-            </>
-          ) : (
-            "No Record"
-          )}
-        </div> */}
-        <div className="mb-6 flex items-center">
-          <div className="w-16 h-16 bg-gray-100 object-cover object-center rounded-full mr-4">
+    <div className="max-w-xl mx-auto w-[28%] bg-white shadow-md rounded-md overflow-hidden mb-8 ">
+      <div className="p-6 bg-white flex flex-col gap-2 justify-between ">
+        <h2 className="text-xl font-semibold ">Transfer Details</h2>
+        <div className="flex flex-row  items-center gap-4">
+          <div className=" bg-gray-100 items-center rounded-full mr-auto">
             <Image
               height={100}
               width={100}
-              className="w-16 h-16 rounded-full"
+              className="w-16 h-16 object-cover object-center rounded-full"
               src={
                 fromDriver
                   ? fromDriver.profilePhoto
@@ -48,7 +22,7 @@ const Transfer = ({ transfer }: any) => {
               alt="Profile"
             />
           </div>
-          <div>
+          <div className="w-[80%] h-[5.25rem]">
             <h3 className="text-lg font-semibold mb-1">From Driver:</h3>
             {fromDriver ? (
               <>
@@ -56,7 +30,7 @@ const Transfer = ({ transfer }: any) => {
                   Name: {fromDriver.name}
                 </p>
                 <p className="text-sm text-gray-500 mb-1">
-                  Phone Number: {fromDriver.phoneNumber}
+                  Phone: {fromDriver.phoneNumber}
                 </p>
               </>
             ) : (
@@ -65,31 +39,34 @@ const Transfer = ({ transfer }: any) => {
           </div>
         </div>
 
-        <div className="mb-6 flex items-center">
-          <div className="w-16 h-16 bg-gray-100 object-cover object-center rounded-full mr-4">
+        <div className="flex flex-row  items-center gap-4">
+          <div className="w-16 h-16 bg-gray-100 rounded-full mr-auto">
             <Image
               height={100}
               width={100}
-              className="w-16 h-16 rounded-full"
+              className="w-16 h-16 object-cover object-center rounded-full"
               src={toDriver ? toDriver.profilePhoto : ""}
               alt="Profile"
             />
           </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-1">
-              {toDriver ? toDriver.name : "Unknown"}
-            </h3>
+
+          <div className="w-[80%] h-[5.25rem]">
+            <h3 className="text-lg font-semibold mb-1">To Driver:</h3>
+            <p className="text-sm text-gray-500 mb-1">Name: {toDriver.name}</p>
             <p className="text-sm text-gray-500 mb-1">
-              {toDriver ? toDriver.phoneNumber : "Unknown"}
+              Phone: {toDriver.phoneNumber}
             </p>
           </div>
         </div>
 
-        <div className="vehicle-details">
-          <h3 className="text-lg font-semibold mb-2">Vehicle:</h3>
-          <p className="mb-2">Vehicle Number: {vehicle.vehicleNumber}</p>
-          <p className="mb-2">Vehicle Type: {vehicle.vehicleType}</p>
-          <div className="flex flex-col gap-2 mb-4">
+        <div className="flex flex-col gap-2">
+          <div className="flex flex-col">
+            <h3 className="text-lg font-semibold ">Vehicle Details:</h3>
+            <p className=" ">Vehicle Number: {vehicle.vehicleNumber}</p>
+            <p className="">Vehicle Type: {vehicle.vehicleType}</p>
+          </div>
+
+          <div className="flex flex-col gap-2">
             <a
               href={vehicle.pucCertificate}
               target="_blank"
